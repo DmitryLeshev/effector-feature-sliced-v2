@@ -1,0 +1,31 @@
+import { apiInstance, Response } from "./_base";
+
+const CONTROLLER = "auth";
+const METHOD = {
+  LOGIN: "login",
+  CREATE: "create",
+  LOGOUT: "logout",
+  STATUS: "status",
+};
+
+const fetchAuth = apiInstance(CONTROLLER);
+
+export type LoginArgs = { login: string; password: string };
+
+export const login = async (args: LoginArgs): Promise<Response<string>> => {
+  return await fetchAuth({ [METHOD.LOGIN]: args });
+};
+
+export type CreateArgs = { login: string; password: string };
+
+export const create = async (args: CreateArgs): Promise<Response<string>> => {
+  return await fetchAuth({ [METHOD.CREATE]: args });
+};
+
+export const logout = async () => {
+  return await fetchAuth({ [METHOD.LOGOUT]: {} });
+};
+
+export const status = async () => {
+  return await fetchAuth({ [METHOD.STATUS]: {} });
+};
